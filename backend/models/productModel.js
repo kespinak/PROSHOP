@@ -11,7 +11,7 @@ const reviewSchema = mongoose.Schema(
   }
 )
 
-const userSchema = mongoose.Schema(
+const productSchema = mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
@@ -31,11 +31,11 @@ const userSchema = mongoose.Schema(
       required: true,
     },
     category: {
-      type: string,
+      type: String,
       required: true,
     },
     description: {
-      type: string,
+      type: String,
       required: true,
     },
     reviews: [reviewSchema],
