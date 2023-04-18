@@ -1,16 +1,31 @@
-import React from 'react'
+//! useEffect infinite loop shows on chrome console
+
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap'
 import Rating from '../components/Rating'
-import products from '../products'
+import axios from 'axios'
+// import products from '../products'
 
 const ProductScreen = ({ match }) => {
-  const product = products.find((p) => p._id === match.params.id)
+  // const product = products.find((p) => p._id === match.params.id) // need to update match.params from react-router-v6
 
+  const [product, setProduct] = useState([])
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const { data } = await axios.get(`/api/products/${match.params.id}`)
+
+      console.log('useEffect ran on ProductScreen')
+      setProduct(data)
+    }
+
+    fetchProduct()
+  }, [])
 
   return (
     <>
-      <Link className='btn btn-light my-3' to='/' >
+      <Link className='btn btn-light my-3' to='/'>
         Go Back
       </Link>
       <Row>
@@ -24,7 +39,7 @@ const ProductScreen = ({ match }) => {
             </ListGroup.Item>
             <ListGroup.Item>
               <Rating
-                value={product.rating} 
+                value={product.rating}
                 text={`${product.numReviews} reviews`}
               />
             </ListGroup.Item>
@@ -52,9 +67,9 @@ const ProductScreen = ({ match }) => {
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
-                <Button 
-                  className='btn-block' 
-                  type='button' 
+                <Button
+                  className='btn-block'
+                  type='button'
                   disabled={product.countInStock === 0}
                 >
                   Add To Cart

@@ -1,3 +1,5 @@
+//! errors: Rating.js, HomeScreen.js, Productscree.js
+
 import './bootstrap.min.css'
 import { Container } from 'react-bootstrap'
 import React from 'react'
@@ -6,6 +8,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import HomeScreen from './screens/HomeScreen'
 import ProductScreen from './screens/ProductScreen'
+import Counter from './components/Counter'
 
 const App = () => {
   return (
@@ -15,6 +18,7 @@ const App = () => {
         <Container>
           <Route path='/' component={HomeScreen} exact />
           <Route path='/product/:id' component={ProductScreen} />
+          <Route path='/counter/' component={Counter} />
         </Container>
       </main>
       <Footer />

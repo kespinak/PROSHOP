@@ -1,3 +1,5 @@
+//! value: PropTypes.number.isRequired is a error message on the chrome console
+
 import React from 'react'
 import PropTypes from 'prop-types'
 
