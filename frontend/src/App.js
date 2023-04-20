@@ -1,4 +1,5 @@
-//! errors: Rating.js, HomeScreen.js, Productscree.js
+//! errors: Rating.js, HomeScreen.js, Productscreen.js
+//! update legacy properties: store.js
 
 import './bootstrap.min.css'
 import { Container } from 'react-bootstrap'

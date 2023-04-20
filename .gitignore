@@ -6,14 +6,6 @@ node_modules/
 /.pnp
 .pnp.js
 
-# tutorial
-tools
-tools/
-tools.json
-reactTools.json
-backendTools.json
-frontendbackendworkflowdiagram.png
-
 # testing
 /coverage
 
