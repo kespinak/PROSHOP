@@ -12,7 +12,7 @@ router.get(
   '/',
   asyncHandler(async (req, res) => {
     //(all mongoose methods returns a promise...so we will use async await + try catch or express-async-handler instead of try catch)
-    const products = await Product.find({})
+    const products = await Product.find({}) // productModel.mongooseFind
 
     res.json(products)
   })
@@ -24,12 +24,13 @@ router.get(
 router.get(
   '/:id',
   asyncHandler(async (req, res) => {
-    const product = await Product.findById(req.params.id)
+    const product = await Product.findById(req.params.id) // productModel.mongooseFindbyId.(request.expressParams.id)
 
     if (product) {
       res.json(product)
     } else {
-      res.status(404).json({ message: 'Product not found' })
+      res.status(404)
+      throw new Error('Product not found')
     }
   })
 )
