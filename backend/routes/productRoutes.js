@@ -13,6 +13,8 @@ router.get(
   asyncHandler(async (req, res) => {
     //(all mongoose methods returns a promise...so we will use async await + try catch or express-async-handler instead of try catch)
     const products = await Product.find({}) // productModel.mongooseFind
+    // res.status(401) // this is an example of an error
+    // throw new Error('Not Authorized')
 
     res.json(products)
   })
