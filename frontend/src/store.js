@@ -8,11 +8,17 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 
 import { productListReducer, productDetailsReducer } from './reducers/productReducers'
 
+import { cartReducer } from './reducers/cartReducers'
+
 // this is a list of reducers, which of which will have its own function
 const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
+  cart: cartReducer,
 })
+
+const cartItemsFromStorage = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')): []
+
 
 // this is the initial state (which is a argument that createStore() takes in...)
 // if we want something to be loaded when redux store loads, then we can put that in here
